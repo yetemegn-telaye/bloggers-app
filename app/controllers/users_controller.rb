@@ -1,4 +1,8 @@
 class UsersController < ActionController::Base
-    def new
+    def index
+    end
+
+    def show
+        puts params
     end
 end

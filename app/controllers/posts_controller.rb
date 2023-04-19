@@ -1,8 +1,10 @@
-class PostsController < ApplicationController::Base
+class PostsController < ActionController::Base
     def new
     end
 
-    def show
-        puts params
-    end
+   def index
+   end
+
+   def show
+   end
 end
