@@ -1,0 +1,29 @@
+.user-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-detail {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 30px;
+    padding: 10px;
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-between;
+}
+.user-img {
+    margin: 30px;
+    padding: 40px;
+    min-width: 100px;
+    max-height: 90px;
+}
+
+.user-bio {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 30px;
+    padding: 10px;
+}

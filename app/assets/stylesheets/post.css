@@ -1,0 +1,26 @@
+.post-div{
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 30px;
+    padding: 10px;
+}
+.post-div p{
+    padding-left: 75%;
+}
+
+.post-detail {
+    border: 1px solid black;
+    margin: 30px;
+    padding: 10px;
+}
+.comments-div {
+    border: 1px solid black;
+    margin: 30px;
+    padding: 10px;
+}
+.post-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
