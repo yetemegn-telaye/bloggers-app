@@ -1,6 +1,6 @@
 class PostsController < ActionController::Base
-  before_action :get_user
-  before_action :get_comments
+  before_action :user
+  before_action :comments
 
   def index
     @posts = @user.posts
@@ -12,12 +12,11 @@ class PostsController < ActionController::Base
 
   private
 
-  def get_user
+  def user
     @user = User.find(params[:id])
   end
 
-  def get_comments
+  def comments
     @comments = Comment.where(post_id: params[:post_id])
   end
-  
 end
