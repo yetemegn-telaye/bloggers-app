@@ -1,7 +1,23 @@
 class PostsController < ActionController::Base
-  def new; end
+  before_action :get_user
+  before_action :get_comments
 
-  def index; end
+  def index
+    @posts = @user.posts
+  end
 
-  def show; end
+  def show
+    @post = @user.posts.find(params[:post_id])
+  end
+
+  private
+
+  def get_user
+    @user = User.find(params[:id])
+  end
+
+  def get_comments
+    @comments = Comment.where(post_id: params[:post_id])
+  end
+  
 end
