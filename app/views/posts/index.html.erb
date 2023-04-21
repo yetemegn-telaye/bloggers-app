@@ -1,1 +1,15 @@
-<h1>HERE IS A LIST OF POSTS FOR A GIVEN USER</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<link data-turbolinks-track="true" href="/assets/post.css?body=1" media="all" rel="stylesheet"/>
+<link data-turbolinks-track="true" href="/assets/user.css?body=1" media="all" rel="stylesheet"/>
+</head>
+<body>
+<%= render partial: "shared/user", locals: {user: @user} %>
+<% @posts.each do |post| %>
+    <%= render partial: "shared/post", locals: {post: post} %>
+    <%= render partial: "shared/comments", locals: {post: post} %>
+<% end %>
+
+</body>
+</html>
