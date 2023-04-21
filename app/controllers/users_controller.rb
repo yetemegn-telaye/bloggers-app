@@ -1,7 +1,16 @@
 class UsersController < ActionController::Base
-  def index; end
+  before_action :posts
+  def index
+    @users = User.all
+  end
 
   def show
-    puts params
+    @user = User.find(params[:id])
+  end
+
+  private
+
+  def posts
+    @posts = Post.where(author_id: params[:id])
   end
 end

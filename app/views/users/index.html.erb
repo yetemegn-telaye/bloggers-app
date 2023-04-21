@@ -1,1 +1,11 @@
-<h1>HERE IS A LIST OF ALL USERS</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<link data-turbolinks-track="true" href="/assets/user.css?body=1" media="all" rel="stylesheet"/>
+</head>
+<body>
+<% @users.each do |user| %>
+    <%= render partial: "shared/user", locals: {user: user} %>
+<% end %>
+</body>
+</html>

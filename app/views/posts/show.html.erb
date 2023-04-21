@@ -1,1 +1,16 @@
-<h1>HERE IS A SINGLE POST BY A GIVEN USER</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<link data-turbolinks-track="true" href="/assets/post.css?body=1" media="all" rel="stylesheet"/>
+</head>
+<body>
+<div class="post-detail">
+    <div class="post-title">
+        <h3>Post #<%= @post.id %> by <%= @user.name %></h3>
+        <span>Comments: <%= @post.commentsCounter %>, Likes: <%= @post.likesCounter %></span>
+    </div>
+    <p> <%= @post.text %> </p>
+</div>
+<%= render partial: "shared/comments", locals: {post: @post} %>
+</body>
+</html>
