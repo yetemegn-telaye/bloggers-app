@@ -1,0 +1,11 @@
+<%= form_with model: [@post,@user], url: users_path, method: post, local:true,scope: :post do |f| %>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title, required: true %>
+    </div>
+    <div>
+        <%= f.label :text, "Post Content" %>
+        <%= f.text_area :text, size: "60x10", required: true %>
+    </div>
+    <%= f.submit "Create New Post" %>
+<% end %>
