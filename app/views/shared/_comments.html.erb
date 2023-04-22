@@ -1,5 +1,9 @@
 <div class="comments-div">
-<% post.recent_five_comments.each do |comment| %>
-    <h5>Username : <%= comment.text %></h5>
+<% if comments.empty? %>
+<h5>No Comments yet</h5>
 <% end %>
+<% comments.each do |comment| %>
+        <p><%= comment.author.name%> : <%= comment.text %></p>
+<% end %>
+
 </div>

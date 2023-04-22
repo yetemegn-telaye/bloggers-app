@@ -6,11 +6,18 @@
 <body>
 <div class="post-detail">
     <div class="post-title">
-        <h3>Post #<%= @post.id %> by <%= @user.name %></h3>
+        <h3>Post #<%= @post.id %> by <%= link_to @post.author.name, user_path(@post.author) %></h3>
         <span>Comments: <%= @post.commentsCounter %>, Likes: <%= @post.likesCounter %></span>
     </div>
     <p> <%= @post.text %> </p>
+
+    <div>
+        <%= form_with model: [@current, @post, Like.new] do |f| %>
+            <%= f.submit "Like post" %>
+        <% end %>
+        <%= link_to "Add Comment", new_user_post_comment_path(@post.author, @post) %>
+    </div>
 </div>
-<%= render partial: "shared/comments", locals: {post: @post} %>
+<%= render partial: "shared/comments", locals: { comments: @post.comments} %>
 </body>
 </html>

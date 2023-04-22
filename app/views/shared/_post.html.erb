@@ -1,5 +1,5 @@
 <div class="post-div">
-    <h3>Post # <%= post.id %></h2>
+    <h3><%= link_to post.title, user_post_path(post.author, post) %> # <%= post.id %></h2>
     <h5> <%= post.text %></h5>
-    <p>Comments: <%= post.commentsCounter %> ,  Likes: <%= post.likesCounter %></p>
+    <p>Comments: <%= post.commentsCounter || 0 %> ,  Likes: <%= post.likesCounter || 0 %></p>
 </div> 

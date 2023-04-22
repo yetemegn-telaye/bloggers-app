@@ -1,0 +1,9 @@
+<div>
+    <%= form_with model: [@user,@post,@comment] do |f| %> 
+        <div>
+            <%= f.label :text, "Write your Comment" %>
+            <%= f.text_area :text, rows: 2, required: true %>
+        </div>
+        <%= f.submit "Create New Comment" %>
+    <% end %>
+</div>

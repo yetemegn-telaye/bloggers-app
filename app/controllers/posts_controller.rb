@@ -1,22 +1,33 @@
-class PostsController < ActionController::Base
-  before_action :user
-  before_action :comments
-
+class PostsController < ApplicationController
   def index
-    @posts = @user.posts
+    @user = User.find(params[:user_id])
   end
 
   def show
-    @post = @user.posts.find(params[:post_id])
+    @post = Post.find(params[:id])
+    @current = current_user
+  end
+
+  def new
+    @user = current_user
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.new(post_params)
+    @post.author = current_user
+    if @post.save
+      flash.now[:success] = 'Post created successfully'
+      redirect_to user_post_url(current_user, @post)
+    else
+      flash[:error] = 'Error: Post not created'
+      redirect_to new_user_post_url(current_user)
+    end
   end
 
   private
 
-  def user
-    @user = User.find(params[:id])
-  end
-
-  def comments
-    @comments = Comment.where(post_id: params[:post_id])
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
