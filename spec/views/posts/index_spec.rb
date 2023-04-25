@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "posts index", type: :feature do
+RSpec.describe "posts index page", type: :feature do
     let!(:first_user) {User.first}
     let!(:users) {[first_user]}
     let!(:posts) {Post.all}
