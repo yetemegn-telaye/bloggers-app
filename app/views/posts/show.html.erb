@@ -18,6 +18,7 @@
         <%= link_to "Add Comment", new_user_post_comment_path(@post.author, @post) %>
     </div>
 </div>
+
 <%= render partial: "shared/comments", locals: { comments: @post.comments} %>
 </body>
 </html>
