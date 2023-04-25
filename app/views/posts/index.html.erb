@@ -6,17 +6,18 @@
 
 </head>
 <body>
+
+
 <%= render partial: "shared/user", locals: {user: @user} %>
- 
 <% if @user.posts.empty? %>
 <p>There is no post yet.</p>
 <% end %>
 <%= link_to "New Post", new_user_post_path %>
-<% @user.posts.each do |post| %>
+<% @posts.includes(:author).each do |post| %>
     <%= render partial: "shared/post", locals: {post: post} %>
     <div class="comments-div">
         <% post.recent_five_comments.each do |comment| %>
-        <h5>Username : <%= comment.text %></h5>
+        <h5><%= comment.author.name %>: <%= comment.text %></h5>
     <% end %>
 </div>
 <% end %>
