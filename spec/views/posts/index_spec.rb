@@ -15,12 +15,42 @@ RSpec.describe "posts index", type: :feature do
     first_like = Like.create(post_id: second_post.id, author_id: first_user.id)
    
     before do
-        visit user_posts_path(users.id)
+        visit user_posts_path(users[0])
     end
 
     describe 'Content in post index page' do
         it 'Should display users profile picture' do
             expect(page).to have_css("img[src='#{first_user.photo}']")
+        end
+        it 'should display users name' do
+            expect(page).to have_content(first_user.name)
+        end
+        it 'should display number of posts by a user' do
+            expect(page).to have_content("Number of posts: #{posts.count}")
+        end
+        it 'should display a post title' do
+            expect(page).to have_content(first_post.title)
+        end
+        it 'should display a post text' do
+            expect(page).to have_content(first_post.text)
+        end
+        it 'should display first comment on a post' do 
+            expect(page).to have_content(first_comment.text)
+        end
+        it 'should display the number of comments on a post' do
+            expect(page).to have_content("Comments: #{first_post.commentsCounter}")
+        end
+        it 'should display the number of likes on a post' do
+            expect(page).to have_content("Likes: #{first_post.likesCounter}")
+        end
+        it 'should have a buttion pagination' do
+            expect(page).to have_button('Pagination')
+        end
+    end
+    describe 'Links in post index page' do
+        it 'when clicking on a post it should link to post show page' do
+            click_link(first_post.title)
+            expect(page).to have_current_path(user_post_path(users[0], posts[0]))
         end
     end
 end
