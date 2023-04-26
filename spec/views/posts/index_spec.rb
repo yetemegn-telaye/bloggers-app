@@ -9,12 +9,9 @@ RSpec.describe 'posts index page', type: :feature do
                            bio: 'Game Developer with a passion for C++')
 
   first_post = Post.create(title: 'Programming', text: 'This is a post about programming', author_id: first_user.id)
-  second_post = Post.create(title: 'Robotics', text: 'This is a post about Robotics', author_id: first_user.id)
 
   first_comment = Comment.create(post_id: first_post.id, text: 'Hi, this is my first comment.',
                                  author_id: first_user.id)
-
-  first_like = Like.create(post_id: second_post.id, author_id: first_user.id)
 
   before do
     visit user_posts_path(users[0])
