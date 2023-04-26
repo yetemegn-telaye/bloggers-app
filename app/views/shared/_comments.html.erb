@@ -2,7 +2,7 @@
 <% if comments.empty? %>
 <h5>No Comments yet</h5>
 <% end %>
-<% comments.each do |comment| %>
+<% comments.includes(:author).each do |comment| %>
         <p><%= comment.author.name%> : <%= comment.text %></p>
 <% end %>
 
