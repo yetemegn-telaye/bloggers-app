@@ -32,25 +32,20 @@
 }
 
 .field input {
+  border-radius: 10px;
+  border:1px solid black;
   padding: 10px 400px;
-}
-
-.actions input {
-  padding: 10px 450px;
-}
-
-.field input {
-    border-radius: 10px;
-    border:1px solid black;
  }
 
 .actions input {
-    color:blueviolet;
-    background-color: antiquewhite;
-    border-radius: 10px;
-    border: 0px;
+  color:blueviolet;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  border: 0px;
+  padding: 10px 450px;
 }
+
 .actions input:hover {
-    color:antiquewhite;
-    background-color: blueviolet;
+  color:antiquewhite;
+  background-color: blueviolet;
 }
