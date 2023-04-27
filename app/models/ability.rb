@@ -9,11 +9,11 @@ class Ability
       else
         can :read, :all
         can :create, Post
-        can :update, Post, user_id: user.id
-        can :destroy, Post, user_id: user.id
+        can :update, Post, author_id: user.id
+        can :destroy, Post, author_id: user.id
         can :create, Comment
-        can :update, Comment, user_id: user.id
-        can :destroy, Comment, user_id: user.id
+        can :update, Comment, author_id: user.id
+        can :destroy, Comment, author_id: user.id
       end
     end
   end
