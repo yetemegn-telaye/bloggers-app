@@ -4,6 +4,9 @@
 <% end %>
 <% comments.includes(:author).each do |comment| %>
         <p><%= comment.author.name%> : <%= comment.text %></p>
+        <% if can? :destroy, comment %>
+                <%= button_to 'Delete' ,user_post_comment_path(comment.post.author,comment.post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
 <% end %>
 
 </div>
