@@ -8,6 +8,9 @@
     <div class="post-title">
         <h3>Post #<%= @post.id %> by <%= link_to @post.author.name, user_path(@post.author) %></h3>
         <span>Comments: <%= @post.commentsCounter %>, Likes: <%= @post.likesCounter %></span>
+        <% if can? :destroy, @post %>
+  <%= button_to 'Delete', user_post_path(@post.author, @post), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
     </div>
     <p> <%= @post.text %> </p>
 
