@@ -13,3 +13,39 @@
  *= require_self
  *= require_tree .
  */
+.login-div,
+.sign-up-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 40px;
+}
+
+.login-form,
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.field input {
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px 400px;
+}
+
+.actions input {
+  color: blueviolet;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  border: 0;
+  padding: 10px 450px;
+}
+
+.actions input:hover {
+  color: antiquewhite;
+  background-color: blueviolet;
+}
