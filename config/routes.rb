@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  root "users#index"
+
+  devise_scope :user do
+    get '/users/sign_out', to: 'devise/sessions#destroy'
+    root to: 'devise/sessions#new'
+  end
+
   resources :users, only: [:index, :show] do
     resources :posts, only: [:index, :new, :create, :show] do 
       resources :comments, only: [:new, :create]
