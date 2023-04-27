@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   def new
     @user = current_user
     @post = Post.find(params[:post_id])
@@ -17,6 +18,13 @@ class CommentsController < ApplicationController
       flash[:error] = 'Error: Comment not created'
       redirect_to new_user_post_comment_url(@post.author, @post)
     end
+  end
+
+  def destroy
+    @post = Comment.find(params[:id])
+    @comment.destroy
+    flash[:success] = 'Comment deleted successfully'
+    redirect_to user_post_path(@comment.post.author, @comment.post) , notice: 'Comment deleted successfully'
   end
 
   private
