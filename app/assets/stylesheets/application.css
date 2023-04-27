@@ -38,3 +38,19 @@
 .actions input {
   padding: 10px 450px;
 }
+
+.field input {
+    border-radius: 10px;
+    border:1px solid black;
+ }
+
+.actions input {
+    color:blueviolet;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border: 0px;
+}
+.actions input:hover {
+    color:antiquewhite;
+    background-color: blueviolet;
+}
