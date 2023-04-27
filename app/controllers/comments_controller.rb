@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @post = Comment.find(params[:id])
     @comment.destroy
     flash[:success] = 'Comment deleted successfully'
-    redirect_to user_post_path(@comment.post.author, @comment.post) , notice: 'Comment deleted successfully'
+    redirect_to user_post_path(@comment.post.author, @comment.post), notice: 'Comment deleted successfully'
   end
 
   private
