@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   def index
     @posts = Post.includes(:author).where(author_id: params[:user_id])
     @user = User.find(params[:user_id])
@@ -24,6 +25,11 @@ class PostsController < ApplicationController
       flash[:error] = 'Error: Post not created'
       redirect_to new_user_post_url(current_user)
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to posts_path, notice: 'Post was successfully deleted.'
   end
 
   private
