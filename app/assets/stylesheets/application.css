@@ -33,19 +33,19 @@
 
 .field input {
   border-radius: 10px;
-  border:1px solid black;
+  border: 1px solid black;
   padding: 10px 400px;
 }
 
 .actions input {
-  color:blueviolet;
+  color: blueviolet;
   background-color: antiquewhite;
   border-radius: 10px;
-  border: 0px;
+  border: 0;
   padding: 10px 450px;
 }
 
 .actions input:hover {
-  color:antiquewhite;
+  color: antiquewhite;
   background-color: blueviolet;
 }
