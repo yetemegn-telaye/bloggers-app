@@ -12,9 +12,11 @@ class CommentsController < ApplicationController
     @comment.author = current_user
     @comment.post = @post
     if @comment.save
+      render json: @comment, status: :created, location: @comment
       flash[:success] = 'Comment created successfully'
       redirect_to user_post_url(@post.author, @post)
     else
+      render json: @comment.errors, status: :unprocessable_entity
       flash[:error] = 'Error: Comment not created'
       redirect_to new_user_post_comment_url(@post.author, @post)
     end
