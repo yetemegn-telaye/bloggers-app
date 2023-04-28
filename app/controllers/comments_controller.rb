@@ -1,13 +1,11 @@
 class CommentsController < ApplicationController
-
-
   def index
     @post = Post.find(params[:post_id])
     @comments = @post.comments
-   
+
     render json: @comments
-    
   end
+
   def new
     @user = current_user
     @post = Post.find(params[:post_id])
@@ -23,19 +21,19 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html do 
+        format.html do
           flash[:success] = 'Comment created successfully'
           redirect_to user_post_url(@post.author, @post)
         end
-      format.json { render json: @comment, status: :created}
-    else
-      format.html do
-      flash[:error] = 'Error: Comment not created'
-      redirect_to new_user_post_comment_url(@post.author, @post)
-      end 
-      format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @comment, status: :created }
+      else
+        format.html do
+          flash[:error] = 'Error: Comment not created'
+          redirect_to new_user_post_comment_url(@post.author, @post)
+        end
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
-  end
   end
 
   def destroy
