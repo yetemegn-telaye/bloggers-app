@@ -1,9 +1,18 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource
+
+
+  def index
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
+   
+    render json: @comments
+    
+  end
   def new
     @user = current_user
     @post = Post.find(params[:post_id])
     @comment = Comment.new
+    render json: @comment
   end
 
   def create
@@ -11,15 +20,22 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.author = current_user
     @comment.post = @post
-    if @comment.save
-      render json: @comment, status: :created, location: @comment
-      flash[:success] = 'Comment created successfully'
-      redirect_to user_post_url(@post.author, @post)
+
+    respond_to do |format|
+      if @comment.save
+        format.html do 
+          flash[:success] = 'Comment created successfully'
+          redirect_to user_post_url(@post.author, @post)
+        end
+      format.json { render json: @comment, status: :created}
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      format.html do
       flash[:error] = 'Error: Comment not created'
       redirect_to new_user_post_comment_url(@post.author, @post)
+      end 
+      format.json { render json: @comment.errors, status: :unprocessable_entity }
     end
+  end
   end
 
   def destroy
