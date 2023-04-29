@@ -3,11 +3,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:author).where(author_id: params[:user_id])
     @user = User.find(params[:user_id])
+    render json: @posts
   end
 
   def show
     @post = Post.find(params[:id])
     @current = current_user
+    render json: @post
   end
 
   def new
